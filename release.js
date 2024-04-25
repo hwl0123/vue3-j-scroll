@@ -1,17 +1,13 @@
-import { exec } from 'child_process';
+import { execSync } from 'child_process';
 
-// 获取从命令行传入的提交信息
-const commitMessage = process.argv[2] || 'Release commit';
+// 读取命令行参数
+const commitMessage = process.argv[2];
 
-// 构建执行的命令
-const command = `git commit -m "${commitMessage}" && git push origin master`;
-
-// 执行命令
-exec(command, (error, stdout, stderr) => {
-  if (error) {
-    console.error(`执行错误: ${error}`);
-    return;
-  }
-  console.log(`stdout: ${stdout}`);
-  console.error(`stderr: ${stderr}`);
-});
+// 如果没有提供提交信息，抛出错误
+if (!commitMessage) {
+  throw new Error('Commit message is required');
+}
+// 执行git命令
+execSync(`git add .`, { stdio: 'inherit' });
+execSync(`git commit -m "${commitMessage}"`, { stdio: 'inherit' });
+execSync(`git push origin master`, { stdio: 'inherit' });
