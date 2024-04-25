@@ -8,7 +8,7 @@
 本人菜的扣脚, 如有需要自行改进
 
 ```bash
-npm install vue3-j-scroll --save-dev 来安装
+npm install vue3-j-scroll
 
 
 在项目中使用
@@ -24,7 +24,7 @@ Vue.use(Vue3JScroll);
       class="list-style"
       :autoplay="true"
       :steep="0.5"
-      :direction="'up'"
+      :direction="'top'"
       :lists="lists"
     >
         <div
@@ -41,9 +41,10 @@ Vue.use(Vue3JScroll);
 | 属性   | 属性名称 | 类型   | 可选值 |
 | ------ | -------- | ------ | ------ |
 | steep  | 滚动的速率   | number | 为正数即可 |
-| direction | 滚动的方向   | string | up
+| direction | 滚动的方向   | string | top,left,right |
 | autoplay | 是否自动滚动   | bolean | true,false |
-| lists | 接收异步数据   | array |同步任务可不传 |
+| lists | 接收异步数据   | array | - |
+| isRoller | 是否可以滑轮滚动   | bolean | true |
 
-<font color=#ff0000>注：如没有显示亲为嵌入的标签设置字体大小</font>
+<font color=#ff0000>注：请固定容器大小</font>
 <br>

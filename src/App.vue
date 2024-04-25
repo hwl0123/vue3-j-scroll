@@ -1,15 +1,10 @@
-<script setup>
-const staffList = Array.from({ length: 20 }, (v, i) => i)
-</script>
-
 <template>
   <div class="person-rank-chart webkit-scroll" ref="chartRef">
     <Vue3JScroll
-      :autoplay="true"
       :speed="1"
       :steep="0.5"
-      :direction="'up'"
       :lists="staffList"
+      ref="scrollRef"
     >
       <ul ref="ulRef">
         <li v-for="(item, index) in staffList" :key="index">
@@ -20,18 +15,40 @@ const staffList = Array.from({ length: 20 }, (v, i) => i)
         </li>
       </ul>
     </Vue3JScroll>
+    
+    <!-- <div class="operate-btn">
+			<button @click="stop">stop</button>
+			<button @click="start">start</button>
+			<button @click="initData">initData</button>
+		</div> -->
   </div>
 </template>
 
+<script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+
+const staffList = Array.from({ length: 20 }, (v, i) => i)
+
+const scrollRef = ref(null);
+
+const stop = () => {
+  scrollRef.value.stop();
+};
+const start = () => {
+  scrollRef.value.start();
+};
+const initData = () => {
+  scrollRef.value.initData();
+};
+</script>
+
 <style scoped>
 .person-rank-chart {
-  margin-top: 14px;
-  height: 272px;
-
+  height: 270px;
   position: relative;
   z-index: 1;
-  overflow-y: auto;
-  max-height: 272px;
+  /* 不需要滚动条, 以免与鼠标滚动冲突 */
+  overflow: hidden;
 }
 .person-rank-chart ul li {
   width: 100%;
@@ -52,5 +69,10 @@ const staffList = Array.from({ length: 20 }, (v, i) => i)
 }
 .person-rank-company {
   display: flex;
+}
+.operate-btn {
+	position: fixed;
+	left: 10px;
+	bottom: 100px;
 }
 </style>
