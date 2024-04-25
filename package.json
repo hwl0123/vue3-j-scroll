@@ -1,0 +1,23 @@
+{
+  "name": "vue3-j-scroll",
+  "version": "0.0.3",
+  "author": "HWL",
+  "description": "基于vue-j-scroll改的vue3版本",
+  "main": "dist/vue3-j-scroll.js",
+  "private": false,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.21",
+    "vue3-j-scroll": "^0.0.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "vite": "^5.2.8"
+  }
+}
